@@ -29,6 +29,10 @@ header {
     outline:none; /* Includes padding and border in the element's total width */
     /* Additional styles for the input element */
 }
+.fa-search:hover {
+  color:deepskyblue; /* Change the color on hover to red */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
 .news-container {
     display: flex;
     flex-wrap: wrap;
