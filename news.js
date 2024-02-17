@@ -1,14 +1,16 @@
-const url = 'https://google-news13.p.rapidapi.com/latest?lr=en-US';
 const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '9e8a2e21dfmshcc3d1f45e62e3b9p1e0b7djsna1c0f8d687e8',
+        'X-RapidAPI-Key': 'b1bbbfafbbmshe94f97f17ab13c6p1c1247jsnc2c1175c9e7e',
         'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
     }
 };
-window.addEventListener('load',() => fetchNews("latest"));
+//search?keyword=facebook
+
+window.addEventListener('load',() => fetchNews('latest?'));
 async function fetchNews(query){
     try {
+        const url = `https://google-news13.p.rapidapi.com/${query}lr=en-US`;
         const res = await fetch(url,options);
         const data = await res.json();
         console.log(data);
@@ -49,16 +51,15 @@ cardClone.firstElementChild.addEventListener('click',()=> {
     window.open(item.newsurl, "_blank");
 });
 }
+const searchButton = document.getElementById('searchbtn');
+const searchText = document.getElementById("searchInput");
 function onNav(id) {
     fetchNews(id);
     searchText.value = "";
 }
 
-const searchButton = document.getElementById('searchbtn');
-const searchText = document.getElementById("searchInput");
-
 searchButton.addEventListener("click",() => {
     const query = searchText.value;
     if (!query) return;
-    fetchNews(query);
+    fetchNews(`search?keyword=${query}&`);
 })
