@@ -48,7 +48,7 @@ console.log('Item:',item);
     newsImg.src = item.images.thumbnail;
     newsTitle.innerHTML = item.title;
 cardClone.firstElementChild.addEventListener('click',()=> {
-    window.open(item.newsurl, "_blank");
+    window.open(item.newsUrl, "_blank");
 });
 }
 const searchButton = document.getElementById('searchbtn');
