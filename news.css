@@ -22,7 +22,7 @@ header {
     background-color:white;
 }
 #searchInput {
-    width: 98%;
+    width: 95%;
     padding: 0px 15px;
     height: 100%;/* Makes the input element fill the entire width of the search bar */
     box-sizing: border-box; 
