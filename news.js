@@ -1,7 +1,7 @@
 const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '9e8a2e21dfmshcc3d1f45e62e3b9p1e0b7djsna1c0f8d687e',
+        'X-RapidAPI-Key': '9e8a2e21dfmshcc3d1f45e62e3b9p1e0b7djsna1c0f8d687e8',
         'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
     }
 };
