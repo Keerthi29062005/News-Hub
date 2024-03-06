@@ -16,13 +16,13 @@ header {
   align-items: center;
   border-radius: 20px;
     border: 1px solid black;
-    width: 100%;
+    width: 80%;
     height: 20px; /* Adjust the width as needed */
     padding: 10px;
     background-color:white;
 }
 #searchInput {
-    width: 98%; 
+    width: 78%; 
     padding: 0px 15px;
     height: 100%;/* Makes the input element fill the entire width of the search bar */
     box-sizing: border-box; 
