@@ -10,7 +10,7 @@ const options = {
 window.addEventListener('load',() => fetchNews('latest?'));
 async function fetchNews(query){
     try {
-        const url = https://google-news13.p.rapidapi.com/${query}lr=en-US;
+        const url = `https://google-news13.p.rapidapi.com/${query}lr=en-US`;
         const res = await fetch(url,options);
         const data = await res.json();
         console.log(data);
