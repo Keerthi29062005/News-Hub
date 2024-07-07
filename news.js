@@ -45,7 +45,7 @@ function fillDataInCard(cardClone, item) {
     const newsImg = cardClone.querySelector('#news-img');
     const newsTitle = cardClone.querySelector('#news-title');
     console.log('Item:', item);
-    newsImg.src = item.images.thumbnail;
+    newsImg.src = item.images.thumbnailProxied;
     newsTitle.innerHTML = item.title;
     cardClone.firstElementChild.addEventListener('click', () => {
         window.open(item.newsUrl, "_blank");
