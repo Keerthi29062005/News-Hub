@@ -5,13 +5,13 @@ const options = {
         'X-RapidAPI-Host': 'google-news13.p.rapidapi.com'
     }
 };
-//search?keyword=facebook
 
-window.addEventListener('load',() => fetchNews('latest?'));
-async function fetchNews(query){
+window.addEventListener('load', () => fetchNews('latest?'));
+
+async function fetchNews(query) {
     try {
         const url = `https://google-news13.p.rapidapi.com/${query}lr=en-US`;
-        const res = await fetch(url,options);
+        const res = await fetch(url, options);
         const data = await res.json();
         console.log(data);
         if (data.status === 'error') {
@@ -32,34 +32,36 @@ async function fetchNews(query){
 function bindData(items) {
     const cardsContainer = document.getElementById("cards-container");
     const newsCardTemplate = document.getElementById("temp");
-    cardsContainer.innerHTML ="";
-    items.forEach((item) =>{
-        if(!item.images || !item.images.thumbnail) return;
+    cardsContainer.innerHTML = "";
+    items.forEach((item) => {
+        if (!item.images || !item.images.thumbnail) return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
-        fillDataInCard(cardClone,item);
+        fillDataInCard(cardClone, item);
         cardsContainer.appendChild(cardClone);
     });
-
 }
-function fillDataInCard(cardClone,item) {
+
+function fillDataInCard(cardClone, item) {
     const newsImg = cardClone.querySelector('#news-img');
     const newsTitle = cardClone.querySelector('#news-title');
-console.log('Item:',item);
-    newsImg.src = item.images.thumbnailProxied;
+    console.log('Item:', item);
+    newsImg.src = item.images.thumbnail;
     newsTitle.innerHTML = item.title;
-cardClone.firstElementChild.addEventListener('click',()=> {
-    window.open(item.newsUrl, "_blank");
-});
+    cardClone.firstElementChild.addEventListener('click', () => {
+        window.open(item.newsUrl, "_blank");
+    });
 }
+
 const searchButton = document.getElementById('searchbtn');
 const searchText = document.getElementById("searchInput");
+
 function onNav(id) {
     fetchNews(id);
     searchText.value = "";
 }
 
-searchButton.addEventListener("click",() => {
+searchButton.addEventListener("click", () => {
     const query = searchText.value;
     if (!query) return;
-    fetchNews(search?keyword=${query}&);
-})
+    fetchNews(`search?keyword=${query}&`);
+});
