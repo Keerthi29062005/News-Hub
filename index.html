@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Website</title>
+    <link rel="stylesheet" type="text/css" href="news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <h1>News Hub</h1>
+        <nav>
+            <!-- Navigation items go here -->
+        </nav>
+    </header>
+        <ul>
+        <li ><a href="#" id='Home' class="hover-link nav-item" onclick="onNav('latest?')">Home</a></li>
+        <li><a href="#" id='Business' class="hover-link nav-item"  onclick="onNav('business?')">Business</a></li>
+        <li><a href="#" id="Entertainment"  class="hover-link nav-item"  onclick="onNav('entertainment?')">Entertainment</a></li>
+        <li><a href="#" id="Health"  class="hover-link nav-item"  onclick="onNav('health?')">Health</a></li>
+        <li><a href="#" id="Science" class="hover-link nav-item"  onclick="onNav('science?')">Science</a></li>
+        <li><a href="#" id="Sports"  class="hover-link nav-item"  onclick="onNav('sport?')">Sports</a></li>
+        <li><a href="#" id="Technology"  class="hover-link nav-item"  onclick="onNav('technology?')">Technology</a></li>
+    </ul>
+
+    <div class="search-bar"> 
+        <input type="text" id="searchInput" placeholder="Search...">
+      <i id="searchbtn" class="fa fa-search" aria-hidden="true"></i>
+  </div>
+    <main>
+        <div id="cards-container" class="cards-container">
+        </div>
+    </main>
+    <template id="temp">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="news-image" id="news-img">
+            </div>
+            <div class="content">
+                <h3 id="news-title">Title</h3>
+            </div>
+        </div>
+    </template>
+    <div class="news-container"></div>
+    <script src="news.js"></script>
+</body>
+</html>
