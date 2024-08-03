@@ -13,7 +13,7 @@ async function fetchNews(query) {
         const url = `https://google-news13.p.rapidapi.com/${query}lr=en-US`;
         const res = await fetch(url, options);
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         if (data.status === 'error') {
             console.error('Error:', data.message);
             return; // Stop further execution if there's an error
@@ -34,7 +34,11 @@ function bindData(items) {
     const newsCardTemplate = document.getElementById("temp");
     cardsContainer.innerHTML = "";
     items.forEach((item) => {
-        if (!item.images || !item.images.thumbnail) return;
+        // Check if the images and thumbnail are available, otherwise skip the item
+        if (!item.images || !item.images.thumbnail) {
+            console.warn('Missing image for item:', item);
+            return;
+        }
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataInCard(cardClone, item);
         cardsContainer.appendChild(cardClone);
@@ -44,9 +48,14 @@ function bindData(items) {
 function fillDataInCard(cardClone, item) {
     const newsImg = cardClone.querySelector('#news-img');
     const newsTitle = cardClone.querySelector('#news-title');
-    console.log('Item:', item);
-    newsImg.src = item.images.thumbnailProxied;
+    // console.log('Item:', item);
+
+    // Use the thumbnail if available, otherwise use a placeholder image
+   
+    newsImg.src = item.images.thumbnailProxied ;
+    console.log(newsImg.src);
     newsTitle.innerHTML = item.title;
+// console.log(item.images.thumbnail);
     cardClone.firstElementChild.addEventListener('click', () => {
         window.open(item.newsUrl, "_blank");
     });
@@ -58,6 +67,18 @@ const searchText = document.getElementById("searchInput");
 function onNav(id) {
     fetchNews(id);
     searchText.value = "";
+}
+
+searchText.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        myFunctionenter();
+    }
+});
+
+function myFunctionenter() {
+    const query = searchText.value;
+    if (!query) return;
+    fetchNews(`search?keyword=${query}&`);
 }
 
 searchButton.addEventListener("click", () => {
